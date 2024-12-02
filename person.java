@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class person {
+public class Person {
     private String name;
     private int money;
     private ArrayList<String> inventory;
@@ -14,7 +14,7 @@ public class person {
      * @param x x coordinate of person's location
      * @param y y coordinate of person's location
      */
-    public person(String name, int money, int x, int y){
+    public Person(String name, int money, int x, int y){
         this.name = name;
         this.money = money;
         this.x = x;
@@ -49,6 +49,10 @@ public class person {
         } else{
             throw new RuntimeException("You do not have object in your inventory");
         }
+    }
+
+    public ArrayList<String> getInventory(){
+        return this.inventory;
     }
     
 }
