@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class person {
+public class Person {
     private int money;
     private ArrayList<Object> inventory;
     private int x; // x for coordinate
@@ -13,7 +13,7 @@ public class person {
      * @param x x coordinate of person's location
      * @param y y coordinate of person's location
      */
-    public person(int money, int x, int y){
+    public Person(int money, int x, int y){
         this.money = money;
         this.x = x;
         this.y = y;
@@ -87,7 +87,7 @@ public class person {
     }
 
     public static void main(String[] args) {
-        person Bebe = new person(50, 0, 0);
+        Person Bebe = new Person(50, 0, 0);
         Object gum = new Object("gum", 3);
         Bebe.buy(gum);
         Bebe.grab(gum);
