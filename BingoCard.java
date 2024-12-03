@@ -15,7 +15,7 @@ public class BingoCard {
     private Person owner;
 
     
-    public BingoCard(Person owner){
+    public BingoCard(){
         this.owner = owner;
         tasks = new ArrayList<>();
         //format the tasks so that the strings are all the same length
@@ -60,10 +60,9 @@ public class BingoCard {
     }
 
     public static void main(String args[]){
-        
-        //BingoCard myCard = new BingoCard();
-        //System.out.println(myCard.tasks);
-        //myCard.printBingoCard();
+        BingoCard myCard = new BingoCard();
+        System.out.println(myCard.tasks);
+        myCard.printBingoCard();
     }
     
 }
