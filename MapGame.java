@@ -2,22 +2,23 @@ import com.google.common.graph.*;
 import java.util.HashMap;
 import java.util.Map;
 
-class Building {
-    String name;
-    String address;
+// class Building {
+    //String name;
+  //  String address;
 
-    public Building(String name, String address) {
-        this.name = name;
-        this.address = address;
-    }
+   // public Building(String name, String address) {
+       // this.name = name;
+      //  this.address = address;
+   // }
 
-    @Override
-    public String toString() {
-        return name;
-    }
-}
+   // @Override
+ //   public String toString() {
+//return name;
+   // }
+//}
 
-public class MapGame {
+public class MapGame{
+   
     public static void main(String[] args) {
         // Create buildings (nodes)
         Building library = new Building("Neilson Library", "4 Tyler Ct");
@@ -29,6 +30,12 @@ public class MapGame {
         MutableGraph<Building> mapGraph = GraphBuilder.undirected().build();
 
         // Add nodes and edges
+
+        mapGraph.addNode(library);
+        mapGraph.addNode(Synergy);
+        mapGraph.addNode(Woodstar);
+        mapGraph.addNode(Bread);
+
         mapGraph.putEdge(library, Synergy); 
         mapGraph.putEdge(Synergy, Woodstar); 
         mapGraph.putEdge(Woodstar, Bread); 
@@ -37,18 +44,9 @@ public class MapGame {
         Map<String, Building> currentLocation = new HashMap<>();
         currentLocation.put("current", library); // Start at the library
 
-        // Simulate user commands
-        String userCommand = "go to Synergy"; // Example command
+        
 
-        if (userCommand.contains("Synergy")) {
-            Building target = Synergy;
-            if (mapGraph.hasEdgeConnecting(currentLocation.get("current"), target)) {
-                System.out.println("Moving to " + target.name);
-                currentLocation.put("current", target); // Update location
-            } else {
-                System.out.println("You can't go directly to " + target.name + " from here.");
-            }
-        }
+    
 
         // Display the graph
         System.out.println("Locations and connections:");
