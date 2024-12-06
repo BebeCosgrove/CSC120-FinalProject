@@ -21,32 +21,128 @@ public class MapGame{
    
     public static void main(String[] args) {
         // Create buildings (nodes)
+
+        //nodes for the smith college
+
+
         Building library = new Building("Neilson Library", "4 Tyler Ct");
-        Building Synergy = new Building("Synergy", "2 Tyler Ct");
-        Building Woodstar = new Building("Woodstar Cafe", "46 College Ln");
-        Building Bread = new Building("hungry ghost bread", "44 College Ln");
+        Building synergy = new Building("Synergy", "2 Tyler Ct");
+        Building woodstar = new Building("Woodstar Cafe", "46 College Ln");
+        Building bread = new Building("hungry ghost bread", "44 College Ln");
+        Building thornes = new Building("Thornes Marketplace", "150 Main St");
+        Building music = new Building("Academy of Music", "274 Main St");
+        Building uo = new Building("Urban Outfitters", "109 Main St");
+        Building troots = new Building("T.ROOTS", "249 Main St");
+        Building mosaic = new Building("Mosaic Cafe", "78 Masonic St");
+        Building policeStation = new Building("Northampton Police Department", "29 Center St");
+        Building forbes = new Building("Forbes Library", "20 West St");
+        Building pulaski = new Building("Pulaski Park", "240 Main St");
+        Building cityHall = new Building("Northampton City Hall", "210 Main St");
+        Building cedarChest = new Building("Cedar Chest", "150 Main St");
+        Building garden = new Building("The Botanic Garden of Smith College", "16 College Ln");
+        Building bass = new Building("Bass Hall", "4 Tyler Ct");
+        Building scam = new Building("Smith College Museum of Art", "20 Elm St");
+        Building smithGate = new Building("Smith College Gate", "20 Elm St");
+        Building pvta = new Building("PVTA Station", "Elm Street at Prospect Street");
 
         // Create a graph to represent the map
         MutableGraph<Building> mapGraph = GraphBuilder.undirected().build();
 
         // Add nodes and edges
 
-        mapGraph.addNode(library);
-        mapGraph.addNode(Synergy);
-        mapGraph.addNode(Woodstar);
-        mapGraph.addNode(Bread);
+        //nodes for the restaurant area 
+        mapGraph.addNode(pvta);
+        mapGraph.addNode(bread);
+        mapGraph.addNode(troots);
+        mapGraph.addNode(woodstar);
+        mapGraph.addNode(mosaic);
+       
+        //nodes for the store area
+        mapGraph.addNode(music);
+        mapGraph.addNode(thornes);
+        mapGraph.addNode(uo);
+        mapGraph.addNode(synergy);
+        mapGraph.addNode(cedarChest);
 
-        mapGraph.putEdge(library, Synergy); 
-        mapGraph.putEdge(Synergy, Woodstar); 
-        mapGraph.putEdge(Woodstar, Bread); 
+        //nodes for city hall area
+        mapGraph.addNode(cityHall);
+        mapGraph.addNode(forbes);
+        mapGraph.addNode(pulaski);
+        mapGraph.addNode(policeStation);
+
+        //nodes for smith college area
+        mapGraph.addNode(smithGate);
+        mapGraph.addNode(bass);
+        mapGraph.addNode(scam);
+        mapGraph.addNode(policeStation);
+
+
+        //edges for the restaurant area 
+        mapGraph.putEdge(pvta, bread); 
+        mapGraph.putEdge(bread, woodstar); 
+        mapGraph.putEdge(bread, troots); 
+        mapGraph.putEdge(bread, mosaic);
+        mapGraph.putEdge(bread, thornes);
+        mapGraph.putEdge(troots, bread);
+        mapGraph.putEdge(troots, mosaic);
+        mapGraph.putEdge(mosaic, troots);
+        mapGraph.putEdge(troots, woodstar);
+        mapGraph.putEdge(mosaic, thornes);
+
+        //edges for the store area 
+        mapGraph.putEdge(music, cedarChest); 
+        mapGraph.putEdge(music, thornes); 
+        mapGraph.putEdge(music, uo); 
+        mapGraph.putEdge(thornes, bread);
+        mapGraph.putEdge(thornes, mosaic);
+        mapGraph.putEdge(thornes, uo);
+        mapGraph.putEdge(thornes, mosaic);
+        mapGraph.putEdge(thornes, synergy);
+        mapGraph.putEdge(cedarChest, thornes);
+        mapGraph.putEdge(cedarChest, music);
+        mapGraph.putEdge(cedarChest, uo);
+        mapGraph.putEdge(cedarChest, synergy);
+        mapGraph.putEdge(uo, music);
+        mapGraph.putEdge(uo, cedarChest);
+        mapGraph.putEdge(uo, thornes);
+        mapGraph.putEdge(uo, synergy);
+        mapGraph.putEdge(synergy, cedarChest);
+        mapGraph.putEdge(synergy, uo);
+        mapGraph.putEdge(synergy, thornes);
+        
+        //edges for the smith college area
+        mapGraph.putEdge(bass, garden); 
+        mapGraph.putEdge(bass, scam); 
+        mapGraph.putEdge(bass, smithGate);
+        mapGraph.putEdge(garden, scam); 
+        mapGraph.putEdge(garden, bass);
+        mapGraph.putEdge(garden, smithGate);
+        mapGraph.putEdge(scam, garden);
+        mapGraph.putEdge(scam, bass);
+        mapGraph.putEdge(scam, smithGate);
+        mapGraph.putEdge(smithGate, bass);
+        mapGraph.putEdge(smithGate, scam);
+        mapGraph.putEdge(smithGate, garden);
+
+
+        //edges for the city hall area
+        mapGraph.putEdge(cityHall, pvta); 
+        mapGraph.putEdge(cityHall, forbes); 
+        mapGraph.putEdge(cityHall, policeStation); 
+        mapGraph.putEdge(cityHall, pulaski);
+        mapGraph.putEdge(forbes, cityHall); 
+        mapGraph.putEdge(forbes, policeStation);
+        mapGraph.putEdge(forbes, pulaski);
+        mapGraph.putEdge(pulaski, cityHall);
+        mapGraph.putEdge(pulaski, bass);
+        mapGraph.putEdge(scam, smithGate);
+        mapGraph.putEdge(smithGate, bass);
+        mapGraph.putEdge(smithGate, scam);
+        mapGraph.putEdge(smithGate, garden);
 
         // Use a helper map to store directions (optional)
         Map<String, Building> currentLocation = new HashMap<>();
         currentLocation.put("current", library); // Start at the library
-
-        
-
-    
 
         // Display the graph
         System.out.println("Locations and connections:");
