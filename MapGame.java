@@ -1,6 +1,7 @@
 import com.google.common.graph.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 // class Building {
     //String name;
@@ -21,8 +22,6 @@ public class MapGame{
    
     public static void main(String[] args) {
         // Create buildings (nodes)
-
-        //nodes for the smith college
 
 
         Building library = new Building("Neilson Library", "4 Tyler Ct");
@@ -140,15 +139,61 @@ public class MapGame{
         mapGraph.putEdge(smithGate, scam);
         mapGraph.putEdge(smithGate, garden);
 
-        // Use a helper map to store directions (optional)
-        Map<String, Building> currentLocation = new HashMap<>();
-        currentLocation.put("current", library); // Start at the library
+
+        // Create directional mapping
+        Map<String, Map<String, Building>> directions = new HashMap<>();
+        // Directions for PVTA Station
+        directions.put(pvta.name, Map.of(
+            "East", bread,
+            "North", smithGate
+        ));
+
+        // Directions for Hungry Ghost Bread
+        directions.put(bread.name, Map.of(
+            "West", pvta,
+            "South", thornes,
+            "East", mosaic,
+            "North", woodstar
+        ));
+        // Directions for Mosaic Cafe
+        directions.put(mosaic.name, Map.of(
+            "West", bread,
+            "South", thornes
+        )); 
+
+         // Directions for Woodstar Cafe
+         directions.put(woodstar.name, Map.of(
+            "South", bread
+        ));
+
+         // Defualt location: start at pvta station
+         Building currentLocation = pvta;
+
+         // Scanner for user input
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("You are starting at: " + currentLocation.name);
+
+        while (true) {
+            System.out.println("\nWhere do you want to go? (North/South/East/West or Restart): ");
+            String input = scanner.nextLine().trim();
+            if (input.equalsIgnoreCase("Restart")) {
+                currentLocation = pvta;
+                System.out.println("\nRestarting... You are back at: " + currentLocation.name);
+            } else {
+                Map<String, Building> possibleMoves = directions.get(currentLocation.name);
+                if (possibleMoves != null && possibleMoves.containsKey(input)) {
+                    currentLocation = possibleMoves.get(input);
+                    System.out.println("\nYou moved " + input + " to: " + currentLocation.name);
+                } else {
+                    System.out.println("\nInvalid direction! Try again.");
+                }
 
         // Display the graph
-        System.out.println("Locations and connections:");
-        for (Building node : mapGraph.nodes()) {
-            System.out.println(node + " is connected to " + mapGraph.adjacentNodes(node));
-        }
+        //System.out.println("Locations and connections:");
+        //for (Building node : mapGraph.nodes()) {
+            //System.out.println(node + " is connected to " + mapGraph.adjacentNodes(node));
+        //}
     }
-}
+    
+}}}
 
