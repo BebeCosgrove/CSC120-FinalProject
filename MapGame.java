@@ -145,7 +145,9 @@ public class MapGame{
         // Directions for PVTA Station
         directions.put(pvta.name, Map.of(
             "East", bread,
-            "North", smithGate
+            "North", smithGate,
+            "West", cityHall,
+            "South", music
         ));
 
         // Directions for Hungry Ghost Bread
@@ -158,13 +160,58 @@ public class MapGame{
         // Directions for Mosaic Cafe
         directions.put(mosaic.name, Map.of(
             "West", bread,
-            "South", thornes
+            "East", troots,
+            "North", woodstar
         )); 
 
          // Directions for Woodstar Cafe
          directions.put(woodstar.name, Map.of(
-            "South", bread
+            "South", bread,
+            "East", mosaic
         ));
+
+        // Directions for T.Roots
+        directions.put(troots.name, Map.of(
+            "West", troots
+        ));
+
+        //Direction of Academy of Music
+        directions.put(music.name, Map.of(
+            "North", pvta,
+            "West", cedarChest,
+            "South", uo,
+            "East", thornes
+        ));
+
+        //Direction of Thornes
+        directions.put(thornes.name, Map.of(
+            "North", bread,
+            "West", music,
+            "South", uo,
+            "East", synergy
+        ));
+
+         //Direction of urban outfitters
+         directions.put(uo.name, Map.of(
+            "North", thornes,
+            "West", music,
+            "South", cedarChest,
+            "East", synergy
+        ));
+         //Direction of Cedar Chest
+         directions.put(cedarChest.name, Map.of(
+            "North", uo,
+            "South", synergy,
+            "East", music
+        ));
+         //Direction of Synergy
+         directions.put(synergy.name, Map.of(
+            "North", thornes,
+            "South", cedarChest,
+            "West", uo
+        ));
+
+
 
          // Defualt location: start at pvta station
          Building currentLocation = pvta;
@@ -185,7 +232,7 @@ public class MapGame{
                     currentLocation = possibleMoves.get(input);
                     System.out.println("\nYou moved " + input + " to: " + currentLocation.name);
                 } else {
-                    System.out.println("\nInvalid direction! Try again.");
+                    System.out.println("\nBuilding Not Found! Try again.");
                 }
 
         // Display the graph
