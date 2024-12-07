@@ -211,8 +211,6 @@ public class MapGame{
             "West", uo
         ));
 
-
-
          // Defualt location: start at pvta station
          Building currentLocation = pvta;
 
