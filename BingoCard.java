@@ -17,6 +17,7 @@ public class BingoCard {
   Task task8 = new Task("Task 8!");
   Task task9 = new Task("Task 9!");
 
+
   /**
    * Constructor for BingoCard class
    * @param owner Person, the owner of the bingo card
@@ -41,7 +42,6 @@ public class BingoCard {
     System.out.println("You have made a bingo card!");
 
   }
-
   /**
    * Prints the bingo card in a 3x3 grid with a check or an x next to each task description indicating the completion status
    */
@@ -140,6 +140,7 @@ public class BingoCard {
     return this.bingo;
   }
 
+
   public static void main(String args[]) {
     Person victoria = new Person(20, 0, 0);
     BingoCard myCard = new BingoCard(victoria);
@@ -154,3 +155,4 @@ public class BingoCard {
   }
 
 }
+
