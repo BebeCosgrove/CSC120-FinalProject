@@ -131,6 +131,12 @@ public class BingoCard {
     } else {
       this.bingo = false;
     }
+    if(this.bingo){
+      System.out.println("BINGO! You win!");
+      //end game
+    } else{
+      System.out.println("No bingo yet, keep trying.");
+    }
     return this.bingo;
   }
 

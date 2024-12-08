@@ -1,180 +1,180 @@
-import java.util.Random;
 import java.util.Scanner;
+import java.util.ArrayList;
 
+/**
+ * stub for chatbot class
+ */
 public class Chatbot {
     //attributes
-    String replacementWord;
     String responseString;
     Scanner userResponseScanner;
     int numWordsReplaced;
     String userInputString;
-    String[] wordArray;
+    ArrayList < String > wordArrayList;
+    String [] wordArray;
     Person chatter;
+    MapGame map;
+    BingoCard card;
 
-    public Chatbot(Person chatter){
-        this.replacementWord = "none";
+    /**
+     * Constructor for chatbot class
+     * @param chatter person to whom the chatbot belongs
+     * @param map map to which the chatbot belongs
+     * @param card bingo card that belongs to the chatbot's owner
+     */
+    public Chatbot(Person chatter, MapGame map, BingoCard card){
         this.responseString = "";
         userResponseScanner = new Scanner(System.in);
         numWordsReplaced = 0;
         this.chatter = chatter;
+        this.map = map;
+        this.card = card;
+        wordArrayList = new ArrayList<>();
     }
 
-    public void printWelcomeMessage(){
+    /**
+     * Method to print a greeting to welcome the character when they spawn on the map
+     */
+    public void printGreeting(){
         System.out.println("Welcome to Northampton!");
         System.out.println("You are currently at the PVTA bus stop outside of JMG at Smith College. There is a bus driver in front of you holding a letter, and town lies to the north of you.");
         System.out.println("Enter a command to make your next move. May the odds be ever in your favor...");
     }
 
+    /**
+     * Method to get the user's input
+     * @return the user's input as a string
+     */
     public String getInput(){
         return this.userInputString = userResponseScanner.nextLine();
     }
 
+
+    /**
+     * Method to make a response based on what the user input. Evaluates a series of if statements to decide what to do, and calls methods based on recognized words.
+     * @return a response to what the person entered
+     */
+
+     //need to add branches for moving through buildings and restarting at the pvta stop
     public String makeResponse(){
         wordArray = this.userInputString.split(" ");
         for (String a : wordArray){
-            //remove spaces and line returns
+            //remove spaces and line returns and turn it all into lowercase
             a.trim();
+            a.toLowerCase();
+            wordArrayList.add(a);
+        }
             //evaluate if the word in the array matches one of the hit words
             //if yes, then set the replacement word to match the correct response
             //indicate that a replacement has been made by upcounting words replaced variable
-            if(a.equalsIgnoreCase("walk")){   //check for walk
-              //this.replacementWord = "you";
-              //a = replacementWord;
-              //numWordsReplaced++;
-              this.responseString = "What direction?";
-            }else if(a.equalsIgnoreCase("north")){   //check for north
-                //walk method with north direction
-            }else if(a.equalsIgnoreCase("south")){   //check for south
+            if(wordArrayList.contains("walk")&&wordArrayList.contains("north")){   //check for walk north
+              //call walk method with north direction
+              this.responseString = "Walking north!";
+            }else if(wordArrayList.contains("walk")&&wordArrayList.contains("south")){   //check for north
                 //walk method with south direction
-            }else if(a.equalsIgnoreCase("east")){   //check for east
+                this.responseString = "Done!";
+            }else if(wordArrayList.contains("walk")&&wordArrayList.contains("east")){   //check for east
+                //walk method with south direction
+                this.responseString = "Done!";
+            }else if(wordArrayList.contains("walk")&&wordArrayList.contains("west")){   //check for west
                 //walk method with east direction
-            }else if(a.equalsIgnoreCase("west")){   //check for west
-                //walk method with west direction
-            }else if(a.equalsIgnoreCase("")){   //check something
-                //do stuff here
+                this.responseString = "Done!";
+            }else if(wordArrayList.contains("walk")){   //check for just walk with no direction
+                this.responseString = "What direction would you like to walk in?";
+            }else if(wordArrayList.contains("grab")&&wordArrayList.contains("obj 1")){   //check grab on obj 1
+                //call grab on obj 1 if at appropriate location
+                this.responseString = "Done!";
+            }else if(wordArrayList.contains("grab")&&wordArrayList.contains("obj 2")){ //call grab on the appropriate object
+              //call grab on obj 2
+              this.responseString = "Done!";
+            }else if(wordArrayList.contains("grab")&&wordArrayList.contains("obj 3")){ //call grab on the appropriate object
+              //call grab on obj 3
+              this.responseString = "Done!";
+            }else if(wordArrayList.contains("grab")&&wordArrayList.contains("obj 4")){ //call grab on the appropriate object
+              //call grab on obj 4
+              this.responseString = "Done!";
+            }else if(wordArrayList.contains("grab")&&wordArrayList.contains("obj 5")){ //call grab on the appropriate object
+              //call grab on obj 5
+              this.responseString = "Done!";
+            }else if(wordArrayList.contains("grab")&&wordArrayList.contains("obj 6")){ //call grab on the appropriate object
+              //call grab on obj 6
+              this.responseString = "Done!";
+            }else if(wordArrayList.contains("grab")&&wordArrayList.contains("obj 7")){ //call grab on the appropriate object
+              //call grab on obj 7
+              this.responseString = "Done!";
+            }else if(wordArrayList.contains("grab")&&wordArrayList.contains("obj 8")){ //call grab on the appropriate object
+              //call grab on obj 8
+              this.responseString = "Done!";
+            }else if(wordArrayList.contains("grab")&&wordArrayList.contains("obj 9")){ //call grab on the appropriate object
+              //call grab on obj 9
+              this.responseString = "Done!";
+            }else if(wordArrayList.contains("grab")){ //check for grab without a specified object
+              this.responseString = "What object would you like to grab?";
+            }else if(wordArrayList.contains("buy")&&wordArrayList.contains("obj 1")){ //check for buy
+              //call buy on obj 1
+              this.responseString = "Done!";
+            }else if(wordArrayList.contains("buy")&&wordArrayList.contains("obj 2")){ //call buy on the appropriate object
+              //call buy on obj 2
+              this.responseString = "Done!";
+            }else if(wordArrayList.contains("buy")&&wordArrayList.contains("obj 3")){ //call buy on the appropriate object
+              //call buy on obj 3
+              this.responseString = "Done!";
+            }else if(wordArrayList.contains("buy")&&wordArrayList.contains("obj 4")){ //call buy on the appropriate object
+              //call buy on obj 4
+              this.responseString = "Done!";
+            }else if(wordArrayList.contains("buy")&&wordArrayList.contains("obj 5")){ //call buy on the appropriate object
+              //call buy on obj 5
+              this.responseString = "Done!";
+            }else if(wordArrayList.contains("buy")&&wordArrayList.contains("obj 6")){ //call buy on the appropriate object
+              //call buy on obj 6
+              this.responseString = "Done!";
+            }else if(wordArrayList.contains("buy")&&wordArrayList.contains("obj 7")){ //call buy on the appropriate object
+              //call buy on obj 7
+              this.responseString = "Done!";
+            }else if(wordArrayList.contains("buy")&&wordArrayList.contains("obj 8")){ //call buy on the appropriate object
+              //call buy on obj 8
+              this.responseString = "Done!";
+            }else if(wordArrayList.contains("buy")&&wordArrayList.contains("obj 9")){ //call buy on the appropriate object
+              //call buy on obj 9
+              this.responseString = "Done!";
+            }else if(wordArrayList.contains("buy")){ //check for buy without a specified object
+              this.responseString = "What would you like to buy?";
+            }else if(wordArrayList.contains("look")&&wordArrayList.contains("around")){ //check to see if they want to look around
+              //call get description from the map
+              this.responseString = "Done!";
+            }else if(wordArrayList.contains("check")&&wordArrayList.contains("bingo")){ //check to see if they want to check their bingo
+              this.card.checkBingo();
+              this.responseString = "Done!";
+            }else if(wordArrayList.contains("borrow")&&wordArrayList.contains("book 1")){ //check to see if they want to borrow a library book
+              //call borrow on the title
+              this.responseString = "Done!";
+            }else if(wordArrayList.contains("borrow")){
+              this.responseString = "What title would you like to borrow?";
+            }else if(wordArrayList.contains("return")&&wordArrayList.contains("book 1")){ //check to see if they want to return a library book
+              //call return on the title
+              this.responseString = "Done!";
+            }else if(wordArrayList.contains("return")){
+              this.responseString = "What title would you like to return?";
+            }else if(wordArrayList.contains("end")&&wordArrayList.contains("game")){
+              //end the game
             }else {
-              this.replacementWord = "none";
+              this.responseString = "I don't know that word";
             }
-            
-            //concatinate the replacement words into a new string
-            responseString = responseString.concat(a + " ");
-  
+            return this.responseString;
         }
 
-    }
+    
     public static void main(String[] arguments) {
-    // declarations
-    String replacementWord = "none";
-    String responseString = "";
-    int randNum = 0;
-    Scanner scanny = new Scanner(System.in);
-    Random randy = new Random();
-    int transcriptIndex = 0;
-    //array of random responses
-    String[] randomResponses = new String[5];
-    randomResponses[0] = "Cool!";
-    randomResponses[1] = "Mhmmmmmmmm!";
-    randomResponses[2] = "How thought provoking...!";
-    randomResponses[3] = "No way";
-    randomResponses[4] = "WOW!";
-
-    //print greeting
-    System.out.println("Hi there, welcome to the ChatBot. How many rounds?");
-    
-    //scan for number of rounds
-    int numRounds = scanny.nextInt();
-    scanny.nextLine();
-
-    //make an array to store transcript
-    String[] transcript = new String[(2*numRounds)+2];
-
-    //Print greeting
-    String greeting = "What's on your mind?";
-    System.out.println(greeting);
-    transcript[transcriptIndex] = greeting;
-    transcriptIndex++;
-    
-    //Check for responses for the number of times they requested
-    for (int i = 0; i < (numRounds); i++){
-      
-      //scan for responses
-      int numWordsReplaced = 0;
-      System.out.println("----------USER RESPONSE BELOW----------");
-      String response = scanny.nextLine();
-      transcript[transcriptIndex] = response;
-      
-      //split scan into an array with each word separated
-      String[] wordArray = response.split(" ");
-      
-      //loop through each word in the array
-      for (String a : wordArray){
-          //remove spaces and line returns
-          a.trim();
-          
-          //evaluate if the word in the array matches one of the hit words
-          //if yes, then set the replacement word to match the correct response
-          //indicate that a replacement has been made by upcounting words replaced variable
-          if(a.equalsIgnoreCase("i")){   //replace "I" with "you"
-            replacementWord = "you";
-            a = replacementWord;
-            numWordsReplaced++;
-          }else if(a.equalsIgnoreCase("me")){   //replace "me" with "you"
-          replacementWord = "you";
-          a = replacementWord;
-          numWordsReplaced++;
-          }else if(a.equalsIgnoreCase("am")){   //replace "am" with "are"
-          replacementWord = "are";
-          a = replacementWord;
-          numWordsReplaced++;
-          }else if(a.equalsIgnoreCase("you")){   //replace "you" with "I"
-          replacementWord = "I";
-          a = replacementWord;
-          numWordsReplaced++;
-          }else if(a.equalsIgnoreCase("my")){   //replace "my" with "your"
-          replacementWord = "your";
-          a = replacementWord;
-          numWordsReplaced++;
-          }else if(a.equalsIgnoreCase("your")){   //replace "your" with "my"
-          replacementWord = "my";
-          a = replacementWord;
-          numWordsReplaced++;
-          }else {
-            replacementWord = "none";
-          }
-          
-          //concatinate the replacement words into a new string
-          responseString = responseString.concat(a + " ");
-
+      boolean play = true;
+      Person victoria = new Person(0,0,0);
+      BingoCard myCard = new BingoCard(victoria);
+      Chatbot chatbot = new Chatbot(victoria, null, myCard);
+      chatbot.printGreeting();
+      while(play){
+        chatbot.getInput();
+        System.out.println(chatbot.makeResponse());
       }
-
-      //evaluate if a replacement has been made, and if so, add a question mark to turn the response into a question
-      if(numWordsReplaced > 0){
-        responseString = responseString.concat("?");
-      } else {
-        //make random number that corresponds to a response
-        randNum = randy.nextInt(5);
-        responseString = randomResponses[randNum];
-        
-      }
-
-      System.out.println("----------CHATBOT RESPONSE BELOW---------");
-      System.out.println(responseString);
-      //store in an array here
-      transcript[transcriptIndex+1] = responseString;
-      responseString = "";
-      transcriptIndex = transcriptIndex+2;
-
+      
     }
-
-    String bye = "Bye!";
-    System.out.println(bye);
-    transcript[transcriptIndex] = bye;
-    System.out.println("Thanks for consulting the chatbot! The trascript of our conversation can be found below:");
-  
-     for(int i = 0; i < (2*numRounds)+2; i++){
-      System.out.println(transcript[i]);
-    }
-  
-    
   }
-}
+
