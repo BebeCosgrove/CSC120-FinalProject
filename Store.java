@@ -10,8 +10,8 @@ public class Store extends Building{
 
     
     // Constructor
-    public Store(String name, String address, int nFloors, int locationX, int locationY, boolean elevator) {
-        super(name, address, nFloors, locationX, locationY, elevator);
+    public Store(String name, String address) {
+        super(name, address);
         // this.inventory = new Hashtable<String, Goods> ();
         this.goodsInventory = new ArrayList<Object>();
     }

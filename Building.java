@@ -8,6 +8,7 @@ public class Building {
     protected int activeFloor = -1; // Default value indicating we are not inside this building
     protected Point location;
     protected boolean elevator;
+    protected Object object;
 
     /**
      * Overloaded constructor for map game class

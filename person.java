@@ -3,8 +3,8 @@ import java.util.ArrayList;
 public class Person {
     private int money;
     private ArrayList<Object> inventory;
-    private int x; // x for coordinate
-    private int y; // y for coordinate
+    //private int x; // x for coordinate
+   // private int y; // y for coordinate
 
 
     /**
@@ -13,10 +13,10 @@ public class Person {
      * @param x x coordinate of person's location
      * @param y y coordinate of person's location
      */
-    public Person(int money, int x, int y){
+    public Person(int money){
         this.money = money;
-        this.x = x;
-        this.y = y;
+        //this.x = x;
+        //this.y = y;
         this.inventory= new ArrayList<Object>();
     }
 
@@ -27,14 +27,16 @@ public class Person {
      */
     public Object grab(Object object){
         if (inventory.contains(object)){
-            throw new RuntimeException("You already have this object and cannot grab it.");
+            System.out.println("You already have this object and cannot grab it.");
+            return object;
         } else{
             if (object.getPrice() == 0){
                 inventory.add(object);
                 System.out.println("You have grabbed" + object.getName());
                 return object;
             } else {
-                throw new RuntimeException("This object costs money so you need to buy it.");
+                System.out.println("This object costs money so you need to buy it.");
+                return null;
             }
         }
 // need to check if they're at the location first to be able to grab a certain object
@@ -49,7 +51,8 @@ public class Person {
      */
     public int buy(Object object){
         if (inventory.contains(object)){
-            throw new RuntimeException("You already have this object and cannot buy it.");
+            System.out.println("You already have this object and cannot buy it.");
+            return this.money;
         } else{
             if (object.getPrice() != 0){
                 inventory.add(object);
@@ -58,7 +61,8 @@ public class Person {
                 System.out.println("You now have $" + this.money + " left after purchasing " + object.getName());
                 return this.money;
             } else {
-                throw new RuntimeException("This object is free and you can just grab it.");
+                System.out.println("This object is free and you can just grab it.");
+                return this.money;
             }
         }
     }
@@ -87,7 +91,7 @@ public class Person {
     }
 
     public static void main(String[] args) {
-        Person Bebe = new Person(50, 0, 0);
+        Person Bebe = new Person(200);
         Object gum = new Object("gum", 3);
         Bebe.buy(gum);
         Bebe.grab(gum);

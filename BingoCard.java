@@ -7,15 +7,16 @@ public class BingoCard {
   ArrayList < Task > tasks;
   private Person owner;
   private boolean bingo;
-  Task task1 = new Task("Task 1!");
-  Task task2 = new Task("Task 2!");
-  Task task3 = new Task("Task 3!");
-  Task task4 = new Task("Task 4!");
-  Task task5 = new Task("Task 5!");
-  Task task6 = new Task("Task 6!");
-  Task task7 = new Task("Task 7!");
-  Task task8 = new Task("Task 8!");
-  Task task9 = new Task("Task 9!");
+  private MapGame map;
+  Task task1 = new Task("Borrow 'Macbeth' from Forbes Library");
+  Task task2 = new Task("Buy Uggs at Synergy                 ");
+  Task task3 = new Task("Buy a coffee at Woodstar            ");
+  Task task4 = new Task("Buy a top at Urban Outfitters       ");
+  Task task5 = new Task("Buy a loaf of bread at Hungry Ghost ");
+  Task task6 = new Task("Find a ticket at Academy of Music   ");
+  Task task7 = new Task("Get a plant from Botanic Garden     ");
+  Task task8 = new Task("Get a postcard from the SCAM        ");
+  Task task9 = new Task("Buy Dumplings from T.ROOTS          ");
 
 
   /**
@@ -25,6 +26,7 @@ public class BingoCard {
   public BingoCard(Person owner) {
     this.owner = owner;
     tasks = new ArrayList < > ();
+    map = new MapGame();
     //format the tasks so that the strings are all the same length
     //add tasks to arraylist
     tasks.add(task1);
@@ -65,34 +67,34 @@ public class BingoCard {
    * @return boolean bingo, true if the owner of the card has scored a bingo and false if not
    */
   public boolean checkBingo() {
-    if (owner.getInventory().contains("object")) {
-      this.task1.setCompletedTrue();
-    }
-    if (owner.getInventory().contains("object")) {
-      this.task2.setCompletedTrue();
-    }
-    if (owner.getInventory().contains("object")) {
-      this.task3.setCompletedTrue();
-    }
-    if (owner.getInventory().contains("object")) {
-      this.task4.setCompletedTrue();
-    }
-    if (owner.getInventory().contains("object")) {
-      this.task5.setCompletedTrue();
-    }
-    if (owner.getInventory().contains("object")) {
-      this.task6.setCompletedTrue();
-    }
+    // if (owner.getInventory().contains(map.macbeth)) {
+    //   this.task1.setCompletedTrue();
+    // }
+    // if (owner.getInventory().contains(map.uggs)) {
+    //   this.task2.setCompletedTrue();
+    // }
+    // if (owner.getInventory().contains(map.coffee)) {
+    //   this.task3.setCompletedTrue();
+    // }
+    // if (owner.getInventory().contains("object")) {
+    //   this.task4.setCompletedTrue();
+    // }
+    // if (owner.getInventory().contains("object")) {
+    //   this.task5.setCompletedTrue();
+    // }
+    // if (owner.getInventory().contains("object")) {
+    //   this.task6.setCompletedTrue();
+    // }
 
-    if (owner.getInventory().contains("object")) {
-      this.task7.setCompletedTrue();
-    }
-    if (owner.getInventory().contains("object")) {
-      this.task8.setCompletedTrue();
-    }
-    if (owner.getInventory().contains("object")) {
-      this.task9.setCompletedTrue();
-    }
+    // if (owner.getInventory().contains("object")) {
+    //   this.task7.setCompletedTrue();
+    // }
+    // if (owner.getInventory().contains("object")) {
+    //   this.task8.setCompletedTrue();
+    // }
+    // if (owner.getInventory().contains("object")) {
+    //   this.task9.setCompletedTrue();
+    // }
 
     //now check all possible bingo wins
     //first row
@@ -134,15 +136,15 @@ public class BingoCard {
     if(this.bingo){
       System.out.println("BINGO! You win!");
       //end game
-    } else{
-      System.out.println("No bingo yet, keep trying.");
-    }
+    } //else{
+      // System.out.println("No bingo yet, keep trying.");
+    
     return this.bingo;
   }
 
 
   public static void main(String args[]) {
-    Person victoria = new Person(20, 0, 0);
+    Person victoria = new Person(20);
     BingoCard myCard = new BingoCard(victoria);
     myCard.task1.setCompletedTrue();
     myCard.task2.setCompletedTrue();

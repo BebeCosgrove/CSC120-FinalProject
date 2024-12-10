@@ -5,13 +5,13 @@ import java.util.Hashtable;
 public class Library extends Building{
  
   // Attributes
-  private Hashtable<String, Boolean> collection;
+  private Hashtable<Object, Boolean> collection;
 
 
   // Constructor
-  public Library(String name, String address, int nFloors, int locationX, int locationY, boolean elevator) {
-    super(name, address, nFloors, locationX, locationY, elevator);
-    collection = new Hashtable<String, Boolean> ();
+  public Library(String name, String address) {
+    super(name, address);
+    collection = new Hashtable<Object, Boolean> ();
   }
   
 
@@ -20,7 +20,7 @@ public class Library extends Building{
    * This an overloaded method(addTittle) to add one book to the collection each time we call it.
    * @param title the title of the book we want to add
    */
-  public void addTitle(String title) {
+  public void addTitle(Object title) {
     collection.put(title, true);
   }
 
@@ -29,7 +29,7 @@ public class Library extends Building{
    * This an overloaded method(addTittle) to add a list of books to the collection each time we call it.
    * @param titles the lists of books we want to add
    */
-  public void addTitle(ArrayList<String> titles) {
+  public void addTitle(ArrayList<Object> titles) {
     for (int i = 0; i < titles.size(); i++){
       collection.put(titles.get(i), true);
     }
@@ -41,7 +41,7 @@ public class Library extends Building{
    * @param title the title of the book we want to remove
    * @return string, the title that we removed
    */
-  public String removeTitle(String title) {
+  public Object removeTitle(Object title) {
     collection.remove(title);
     return title;
   }
@@ -50,15 +50,16 @@ public class Library extends Building{
    * This method modify the value associated with the given key (he title) to false when a book is checked out.
    * @param title the book that is checked out
    */
-  public void checkOut(String title) {
+  public void checkOut(Object title) {
     collection.replace(title, false);
+    System.out.println("Borrrowed "+title);
   }
 
   /**
    * This method modify the value associated with the given key (he title) to true when a book is returned.
    * @param title the book that is returned
    */
-  public void returnBook(String title) {
+  public void returnBook(Object title) {
     collection.replace(title, true);
   }
 
@@ -67,7 +68,7 @@ public class Library extends Building{
    * @param title the book we want to check
    * @return boolean, true if the title appears as a key in the Libary's collection, false otherwise
    */
-  public boolean containsTitle(String title) {
+  public boolean containsTitle(Object title) {
     return collection.containsKey(title);
   }
 
@@ -76,7 +77,7 @@ public class Library extends Building{
    * @param title the book we want to check
    * @return boolean, true if the title is currently available, false otherwise
    */
-  public boolean isAvailable(String title) {
+  public boolean isAvailable(Object title) {
     return collection.get(title);
   }
 
@@ -109,22 +110,23 @@ public class Library extends Building{
 
 
   public static void main(String[] args) {
-    Library library = new Library("Neilson", "7 Neilson Drive", 4);
-    System.out.println(library.getAddress());
-    library.addTitle("Beginning Korean I by Suk Massey");
-    library.addTitle("Intermediate Korean I by Suk Massey");
-    library.addTitle("STAT 2 by Ann R. Cannon");
-    library.printCollection();
-    System.out.println(library.removeTitle("STAT 2 by Ann R. Cannon"));
-    library.printCollection();
-    library.checkOut("Beginning Korean I by Suk Massey");
-    library.printCollection();
-    System.out.println(library.isAvailable("Beginning Korean I by Suk Massey"));
-    library.returnBook("Beginning Korean I by Suk Massey");
-    library.printCollection();
-    System.out.println(library.containsTitle("STAT 2 by Ann R. Cannon"));
-    Building building = library;
-    building.showOptions();
+    //Library library = new Library("Neilson", "7 Neilson Drive", 4);
+  //   System.out.println(library.getAddress());
+  //   library.addTitle("Beginning Korean I by Suk Massey");
+  //   library.addTitle("Intermediate Korean I by Suk Massey");
+  //   library.addTitle("STAT 2 by Ann R. Cannon");
+  //   library.printCollection();
+  //   System.out.println(library.removeTitle("STAT 2 by Ann R. Cannon"));
+  //   library.printCollection();
+  //   library.checkOut("Beginning Korean I by Suk Massey");
+  //   library.printCollection();
+  //   System.out.println(library.isAvailable("Beginning Korean I by Suk Massey"));
+  //   library.returnBook("Beginning Korean I by Suk Massey");
+  //   library.printCollection();
+  //   System.out.println(library.containsTitle("STAT 2 by Ann R. Cannon"));
+  //   Building building = library;
+  //   building.showOptions();
+  // }
   }
   
 }

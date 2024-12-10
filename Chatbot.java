@@ -56,6 +56,7 @@ public class Chatbot {
      */
 
      //need to add branches for moving through buildings and restarting at the pvta stop
+     //add branch so that the user can check the library's collection
     public String makeResponse(){
         wordArray = this.userInputString.split(" ");
         for (String a : wordArray){
@@ -68,36 +69,71 @@ public class Chatbot {
             //if yes, then set the replacement word to match the correct response
             //indicate that a replacement has been made by upcounting words replaced variable
             if(wordArrayList.contains("walk")&&wordArrayList.contains("north")){   //check for walk north
-              //call walk method with north direction
-              this.responseString = "Walking north!";
+              map.move("North");
+              System.out.println("You have moved north to "+this.map.getCurrentLocation());
+            
             }else if(wordArrayList.contains("walk")&&wordArrayList.contains("south")){   //check for north
                 //walk method with south direction
-                this.responseString = "Done!";
+               this.map.move("South");
+               System.out.println("You have moved south to "+this.map.getCurrentLocation());
             }else if(wordArrayList.contains("walk")&&wordArrayList.contains("east")){   //check for east
-                //walk method with south direction
+                //walk method with east direction
+                this.map.move("East");
                 this.responseString = "Done!";
             }else if(wordArrayList.contains("walk")&&wordArrayList.contains("west")){   //check for west
-                //walk method with east direction
+                //walk method with west direction
+                this.map.move("West");
                 this.responseString = "Done!";
             }else if(wordArrayList.contains("walk")){   //check for just walk with no direction
-                this.responseString = "What direction would you like to walk in?";
-            }else if(wordArrayList.contains("grab")&&wordArrayList.contains("obj 1")){   //check grab on obj 1
+                this.responseString = "What direction would you like to walk in? Please enter 'walk' and the direction.";
+            
+            
+            
+            
+              }else if(wordArrayList.contains("grab")&&wordArrayList.contains("uggs")){   //check grab on obj 1
                 //call grab on obj 1 if at appropriate location
+                if(map.getCurrentLocation() == map.synergy){
+                    chatter.grab(map.uggs);
+                } else{
+                  this.responseString = "You aren't at synnergy";
+                }
                 this.responseString = "Done!";
-            }else if(wordArrayList.contains("grab")&&wordArrayList.contains("obj 2")){ //call grab on the appropriate object
+            }else if(wordArrayList.contains("grab")&&wordArrayList.contains("coffee")){ //call grab on the appropriate object
               //call grab on obj 2
+              if(map.getCurrentLocation() == map.woodstar){
+                chatter.grab(map.coffee);
+            } else{
+              this.responseString = "You aren't at woodstar";
+            }
               this.responseString = "Done!";
-            }else if(wordArrayList.contains("grab")&&wordArrayList.contains("obj 3")){ //call grab on the appropriate object
+            }else if(wordArrayList.contains("grab")&&wordArrayList.contains("top")){ //call grab on the appropriate object
               //call grab on obj 3
+              if(map.getCurrentLocation() == map.uo){
+                chatter.grab(map.top);
+            } else{
+              this.responseString = "You aren't at Urban Outfitters";
+            }
               this.responseString = "Done!";
             }else if(wordArrayList.contains("grab")&&wordArrayList.contains("obj 4")){ //call grab on the appropriate object
               //call grab on obj 4
               this.responseString = "Done!";
-            }else if(wordArrayList.contains("grab")&&wordArrayList.contains("obj 5")){ //call grab on the appropriate object
+            }else if(wordArrayList.contains("grab")&&wordArrayList.contains("ticket")){ //call grab on the appropriate object
               //call grab on obj 5
+              if(map.getCurrentLocation() == map.music){
+                chatter.grab(map.ticket);
+                card.task6.setCompletedTrue();
+            } else{
+              this.responseString = "You aren't at Academy of Music";
+            }
               this.responseString = "Done!";
-            }else if(wordArrayList.contains("grab")&&wordArrayList.contains("obj 6")){ //call grab on the appropriate object
+            }else if(wordArrayList.contains("grab")&&wordArrayList.contains("plant")){ //call grab on the appropriate object
               //call grab on obj 6
+              if(map.getCurrentLocation() == map.garden){
+                chatter.grab(map.plant);
+                card.task7.setCompletedTrue();
+            } else{
+              this.responseString = "You aren't at Botanic Garden";
+            }
               this.responseString = "Done!";
             }else if(wordArrayList.contains("grab")&&wordArrayList.contains("obj 7")){ //call grab on the appropriate object
               //call grab on obj 7
@@ -110,17 +146,50 @@ public class Chatbot {
               this.responseString = "Done!";
             }else if(wordArrayList.contains("grab")){ //check for grab without a specified object
               this.responseString = "What object would you like to grab?";
-            }else if(wordArrayList.contains("buy")&&wordArrayList.contains("obj 1")){ //check for buy
-              //call buy on obj 1
+            
+            
+            
+            
+            
+            }else if(wordArrayList.contains("buy")&&wordArrayList.contains("uggs")){ //check for buy uggs
+              //call buy on uggs
+              if(map.getCurrentLocation() == map.synergy){
+                map.synergy.sellGoods(map.uggs);
+                chatter.buy(map.uggs);
+                card.task2.setCompletedTrue();
+            } else{
+              this.responseString = "You aren't at synnergy";
+            }
               this.responseString = "Done!";
-            }else if(wordArrayList.contains("buy")&&wordArrayList.contains("obj 2")){ //call buy on the appropriate object
+            }else if(wordArrayList.contains("buy")&&wordArrayList.contains("coffee")){ //call buy on the appropriate object
               //call buy on obj 2
+              if(map.getCurrentLocation() == map.woodstar){
+                map.woodstar.sellGoods(map.coffee);
+                chatter.buy(map.coffee);
+                card.task3.setCompletedTrue();
+            } else{
+              this.responseString = "You aren't at woodstar";
+            }
               this.responseString = "Done!";
-            }else if(wordArrayList.contains("buy")&&wordArrayList.contains("obj 3")){ //call buy on the appropriate object
+            }else if(wordArrayList.contains("buy")&&wordArrayList.contains("top")){ //call buy on the appropriate object
               //call buy on obj 3
+              if(map.getCurrentLocation() == map.uo){
+                map.uo.sellGoods(map.top);
+                chatter.buy(map.top);
+                card.task4.setCompletedTrue();
+            } else{
+              this.responseString = "You aren't at Urban Outfitters";
+            }
               this.responseString = "Done!";
-            }else if(wordArrayList.contains("buy")&&wordArrayList.contains("obj 4")){ //call buy on the appropriate object
+            }else if(wordArrayList.contains("buy")&&wordArrayList.contains("loaf")||wordArrayList.contains("buy")&&wordArrayList.contains("bread")){ //call buy on the appropriate object
               //call buy on obj 4
+              if(map.getCurrentLocation() == map.bread){
+                map.bread.sellGoods(map.loaf);
+                chatter.buy(map.loaf);
+                card.task5.setCompletedTrue();
+            } else{
+              this.responseString = "You aren't at Urban Outfitters";
+            }
               this.responseString = "Done!";
             }else if(wordArrayList.contains("buy")&&wordArrayList.contains("obj 5")){ //call buy on the appropriate object
               //call buy on obj 5
@@ -131,27 +200,56 @@ public class Chatbot {
             }else if(wordArrayList.contains("buy")&&wordArrayList.contains("obj 7")){ //call buy on the appropriate object
               //call buy on obj 7
               this.responseString = "Done!";
-            }else if(wordArrayList.contains("buy")&&wordArrayList.contains("obj 8")){ //call buy on the appropriate object
+            }else if(wordArrayList.contains("buy")&&wordArrayList.contains("postcard")){ //call buy on the appropriate object
               //call buy on obj 8
+              if(map.getCurrentLocation() == map.scam){
+                map.scam.sellGoods(map.postcard);
+                chatter.buy(map.postcard);
+                card.task8.setCompletedTrue();
+            } else{
+              this.responseString = "You aren't at Smith College Art Museum";
+            }
               this.responseString = "Done!";
-            }else if(wordArrayList.contains("buy")&&wordArrayList.contains("obj 9")){ //call buy on the appropriate object
+            }else if(wordArrayList.contains("buy")&&wordArrayList.contains("dumplings")){ //call buy on the appropriate object
               //call buy on obj 9
+              if(map.getCurrentLocation() == map.troots){
+                map.troots.sellGoods(map.dumplings);
+                chatter.buy(map.dumplings);
+                card.task9.setCompletedTrue();
+            } else{
+              this.responseString = "You aren't at T. Roots";
+            }
               this.responseString = "Done!";
             }else if(wordArrayList.contains("buy")){ //check for buy without a specified object
               this.responseString = "What would you like to buy?";
             }else if(wordArrayList.contains("look")&&wordArrayList.contains("around")){ //check to see if they want to look around
               //call get description from the map
               this.responseString = "Done!";
+            
             }else if(wordArrayList.contains("check")&&wordArrayList.contains("bingo")){ //check to see if they want to check their bingo
               this.card.checkBingo();
+              this.card.printBingoCard();
               this.responseString = "Done!";
-            }else if(wordArrayList.contains("borrow")&&wordArrayList.contains("book 1")){ //check to see if they want to borrow a library book
-              //call borrow on the title
-              this.responseString = "Done!";
+            }else if(wordArrayList.contains("borrow")&&wordArrayList.contains("macbeth")){ //check to see if they want to borrow a library book
+              if(map.getCurrentLocation() == map.forbes){
+                this.map.forbes.checkOut(map.macbeth);
+                this.chatter.getInventory().add(map.macbeth);
+                card.task1.setCompletedTrue();
+                this.responseString = "Done!";
+              } else{
+                this.responseString = "You aren't at the library!";
+              }
+              
             }else if(wordArrayList.contains("borrow")){
-              this.responseString = "What title would you like to borrow?";
-            }else if(wordArrayList.contains("return")&&wordArrayList.contains("book 1")){ //check to see if they want to return a library book
+              this.responseString = "What title would you like to borrow? Please enter 'borrow' followed by the title.";
+            }else if(wordArrayList.contains("return")&&wordArrayList.contains("macbeth")){ //check to see if they want to return a library book
               //call return on the title
+              if(map.getCurrentLocation() == map.forbes){
+                this.map.forbes.returnBook(map.macbeth);
+                this.responseString = "Done!";
+              } else{
+                this.responseString = "You aren't at the library!";
+              }
               this.responseString = "Done!";
             }else if(wordArrayList.contains("return")){
               this.responseString = "What title would you like to return?";
@@ -160,16 +258,21 @@ public class Chatbot {
             }else {
               this.responseString = "I don't know that word";
             }
+            wordArrayList.clear();
+
             return this.responseString;
+            
         }
 
     
     public static void main(String[] arguments) {
       boolean play = true;
-      Person victoria = new Person(0,0,0);
+      Person victoria = new Person(0);
       BingoCard myCard = new BingoCard(victoria);
-      Chatbot chatbot = new Chatbot(victoria, null, myCard);
+      MapGame map = new MapGame();
+      Chatbot chatbot = new Chatbot(victoria, map, myCard);
       chatbot.printGreeting();
+      //map.move("North");
       while(play){
         chatbot.getInput();
         System.out.println(chatbot.makeResponse());
