@@ -236,7 +236,6 @@ public class MapGame{
             "West", uo
         ));
 
-=======
         // Directions for City Hall
         directions.put(cityHall.name, Map.of(
             "North", pvta,
@@ -310,7 +309,7 @@ public class MapGame{
 
     }
     }
-    public static void main(String[] args) {
+    // public static void main(String[] args) {
         // Create buildings (nodes)
 
     // put object in constructor for each instance of building 
