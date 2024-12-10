@@ -3,28 +3,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-// class Building {
-    //String name;
-  //  String address;
-
-   // public Building(String name, String address) {
-       // this.name = name;
-      //  this.address = address;
-   // }
-
-   // @Override
- //   public String toString() {
-//return name;
-   // }
-//}
-
 public class MapGame{
    
     public static void main(String[] args) {
         // Create buildings (nodes)
 
 
-        Building library = new Building("Neilson Library", "4 Tyler Ct");
         Building synergy = new Building("Synergy", "2 Tyler Ct");
         Building woodstar = new Building("Woodstar Cafe", "46 College Ln");
         Building bread = new Building("hungry ghost bread", "44 College Ln");
@@ -198,19 +182,93 @@ public class MapGame{
             "South", cedarChest,
             "East", synergy
         ));
-         //Direction of Cedar Chest
+         //Directions for Cedar Chest
          directions.put(cedarChest.name, Map.of(
             "North", uo,
             "South", synergy,
             "East", music
         ));
-         //Direction of Synergy
+         //Directions for Synergy
          directions.put(synergy.name, Map.of(
             "North", thornes,
             "South", cedarChest,
             "West", uo
         ));
 
+<<<<<<< HEAD
+=======
+        // Directions for City Hall
+        directions.put(cityHall.name, Map.of(
+            "North", pvta,
+            "South", policeStation,
+            "East", pulaski,
+            "West", forbes
+
+        ));
+
+        // Directions for Forbes
+        directions.put(forbes.name, Map.of(
+            "South", policeStation,
+            "East", pulaski,
+            "North", cityHall
+
+        ));
+
+        // Directions for Pulaski Park
+        directions.put(pulaski.name, Map.of(
+            "South", policeStation,
+            "West", forbes,
+            "North", cityHall
+
+        ));
+
+        // Directions for Police Station
+        directions.put(policeStation.name, Map.of(
+            "North", cityHall,
+            "East", pulaski,
+            "West", forbes
+
+        ));
+
+
+        // Directions for Smith College
+        directions.put(smithGate.name, Map.of(
+            "South", pvta,
+            "North", garden,
+            "East", scam,
+            "West", bass
+
+        ));
+
+        // Directions for Bass Hall
+        directions.put(bass.name, Map.of(
+            "North", garden,
+            "East", scam,
+            "South", smithGate
+
+        ));
+
+        // Directions for SCAM
+        directions.put(scam.name, Map.of(
+            "North", garden,
+            "South", smithGate,
+            "West", bass
+
+        ));
+
+        // Directions for Botanic Garden
+        directions.put(garden.name, Map.of(
+            "South", smithGate,
+            "East", scam,
+            "West", bass
+
+        ));
+
+
+
+
+
+>>>>>>> 359743244e854fd59a7570471cafb276b38907d2
          // Defualt location: start at pvta station
          Building currentLocation = pvta;
 
@@ -233,11 +291,6 @@ public class MapGame{
                     System.out.println("\nBuilding Not Found! Try again.");
                 }
 
-        // Display the graph
-        //System.out.println("Locations and connections:");
-        //for (Building node : mapGraph.nodes()) {
-            //System.out.println(node + " is connected to " + mapGraph.adjacentNodes(node));
-        //}
     }
     
 }}}
