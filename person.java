@@ -37,7 +37,7 @@ public class Person {
                 throw new RuntimeException("This object costs money so you need to buy it.");
             }
         }
-
+// need to check if they're at the location first to be able to grab a certain object
         
     }
 
