@@ -1,4 +1,4 @@
-# CSC120-FinalProject
+# Northampton Bingo(CSC120-FinalProject)
 
 ## Deliverables:
  - Your final codebase
