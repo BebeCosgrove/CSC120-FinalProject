@@ -1,22 +1,20 @@
 import java.util.ArrayList;
 
+/**
+ * Person class
+ */
 public class Person {
     private int money;
     private ArrayList<Object> inventory;
-    //private int x; // x for coordinate
-   // private int y; // y for coordinate
+
 
 
     /**
      * Constructor for person class 
      * @param money amount of money user has
-     * @param x x coordinate of person's location
-     * @param y y coordinate of person's location
      */
     public Person(int money){
         this.money = money;
-        //this.x = x;
-        //this.y = y;
         this.inventory= new ArrayList<Object>();
     }
 
@@ -39,7 +37,6 @@ public class Person {
                 return null;
             }
         }
-// need to check if they're at the location first to be able to grab a certain object
         
     }
 
@@ -90,6 +87,11 @@ public class Person {
 
     }
 
+
+    /**
+     * Main Method
+     * @param args
+     */
     public static void main(String[] args) {
         Person Bebe = new Person(200);
         Object gum = new Object("gum", 3);

@@ -41,8 +41,13 @@ public class BingoCard {
     //shuffle the arraylist of tasks
     Collections.shuffle(tasks);
     bingo = false;
-    System.out.println("You have made a bingo card!");
 
+  }
+  /**
+   * Setter for bingo boolean (sets true)
+   */
+  public void setBingoTrue(){
+    this.bingo = true;
   }
   /**
    * Prints the bingo card in a 3x3 grid with a check or an x next to each task description indicating the completion status
@@ -63,41 +68,10 @@ public class BingoCard {
     }
   }
   /**
-   * Checks if the person has socred a bingo based on whether or not they have completed tasks that make three in a row for their bingo card
+   * Checks if the person has scored a bingo based on whether or not they have completed tasks that make three in a row for their bingo card
    * @return boolean bingo, true if the owner of the card has scored a bingo and false if not
    */
   public boolean checkBingo() {
-    // if (owner.getInventory().contains(map.macbeth)) {
-    //   this.task1.setCompletedTrue();
-    // }
-    // if (owner.getInventory().contains(map.uggs)) {
-    //   this.task2.setCompletedTrue();
-    // }
-    // if (owner.getInventory().contains(map.coffee)) {
-    //   this.task3.setCompletedTrue();
-    // }
-    // if (owner.getInventory().contains("object")) {
-    //   this.task4.setCompletedTrue();
-    // }
-    // if (owner.getInventory().contains("object")) {
-    //   this.task5.setCompletedTrue();
-    // }
-    // if (owner.getInventory().contains("object")) {
-    //   this.task6.setCompletedTrue();
-    // }
-
-    // if (owner.getInventory().contains("object")) {
-    //   this.task7.setCompletedTrue();
-    // }
-    // if (owner.getInventory().contains("object")) {
-    //   this.task8.setCompletedTrue();
-    // }
-    // if (owner.getInventory().contains("object")) {
-    //   this.task9.setCompletedTrue();
-    // }
-
-    //now check all possible bingo wins
-    //first row
     if (tasks.get(0).getCompletionStatus() == true && tasks.get(1).getCompletionStatus() == true && tasks.get(2).getCompletionStatus() == true) {
       this.bingo = true;
       System.out.println("Checking first row... " + this.bingo);
@@ -130,19 +104,19 @@ public class BingoCard {
       this.bingo = true;
       System.out.println("Checking second diagonal... " + this.bingo);
       //else no bingo
-    } else {
-      this.bingo = false;
-    }
+    } 
     if(this.bingo){
       System.out.println("BINGO! You win!");
       //end game
-    } //else{
-      // System.out.println("No bingo yet, keep trying.");
-    
+    }
     return this.bingo;
   }
 
 
+
+  /*
+   * Main method
+   */
   public static void main(String args[]) {
     Person victoria = new Person(20);
     BingoCard myCard = new BingoCard(victoria);

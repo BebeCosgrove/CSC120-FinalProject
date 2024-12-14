@@ -2,10 +2,14 @@ import com.google.common.graph.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-
+/**
+ * Class for each instance of the Northampton map
+ */
 public class MapGame{
-   private HashMap<String, Map<String, Building>> directions;
-   private MutableGraph<Building> mapGraph;
+   private HashMap<String, Map<String, Building>> directions; // stores directions to get to buildings
+   private MutableGraph<Building> mapGraph; // graph
+
+   // Buildings
    private Building pvta;
    private Building currentLocation;
    public Store synergy;
@@ -25,7 +29,8 @@ public class MapGame{
    public Building garden;
    public Store scam;
    private Building smithGate;
-   //objects
+
+   //Objects
    Object macbeth;
    Object uggs;
    Object coffee;
@@ -38,12 +43,16 @@ public class MapGame{
    
 
 
-
+/**
+ * Constructor
+ */
     public MapGame(){
         pvta = new Building("PVTA Station", "Elm Street at Prospect Street");
-        this.currentLocation = pvta;
+        this.currentLocation = pvta; // sets current location to pvta
         directions = new HashMap<>();
+        // create graph
         mapGraph = GraphBuilder.undirected().build();
+        // make instances of buildings
         synergy = new Store("Synergy", "2 Tyler Ct");
         woodstar = new Store("Woodstar Cafe", "46 College Ln");
         bread = new Store("hungry ghost bread", "44 College Ln");
@@ -61,9 +70,11 @@ public class MapGame{
         bass = new Building("Bass Hall", "4 Tyler Ct");
         scam = new Store("Smith College Museum of Art", "20 Elm St");
         smithGate = new Building("Smith College Gate", "20 Elm St");
+        // add nodes and adges to buildings
         this.addNodesEdges();
         this.directions();
 
+        // create instances of objects
         macbeth = new Object("macbeth");
         forbes.addTitle(macbeth);
         uggs = new Object("uggs", 150);
@@ -84,33 +95,38 @@ public class MapGame{
 
     }
 
+    /**
+     * Getter for current location
+     * @return current location
+     */
     public Building getCurrentLocation(){
         return this.currentLocation;
     }
 
     public Building move(String direction){
-        //while (true) {
-            //System.out.println("\nWhere do you want to go? (North/South/East/West or Restart): ");
-            //String input = scanner.nextLine().trim();
-            if (direction.equalsIgnoreCase("Restart")) {
-                currentLocation = pvta;
-                System.out.println("Restarting... You are back at: " + currentLocation.name);
+        if (direction.equalsIgnoreCase("Restart")) {
+            currentLocation = pvta;
+            System.out.println("Restarting... You are back at: " + currentLocation.name);
+        } else {
+            Map<String, Building> possibleMoves = directions.get(currentLocation.name);
+            if (possibleMoves != null && possibleMoves.containsKey(direction)) {
+                currentLocation = possibleMoves.get(direction);
+
+                System.out.println("\nYou moved " + direction + " to: " + currentLocation.name);
             } else {
-                Map<String, Building> possibleMoves = directions.get(currentLocation.name);
-                if (possibleMoves != null && possibleMoves.containsKey(direction)) {
-                    currentLocation = possibleMoves.get(direction);
-
-                   System.out.println("\nYou moved " + direction + " to: " + currentLocation.name);
-                } else {
-                    System.out.println("Building not found! Try again.");
-        
-                }
-
-            
+                System.out.println("Building not found! Try again.");
+    
             }
-            return currentLocation;
+
+        
+        }
+        return currentLocation;
         
     }
+
+    /**
+     * Adds nodes and edges between building instances
+     */
     public void addNodesEdges(){
         mapGraph.addNode(pvta);
         mapGraph.addNode(bread);
@@ -204,6 +220,9 @@ public class MapGame{
 
     }
 
+    /**
+     * Sets directions between buildings
+     */
     public void directions(){
         // Directions for PVTA Station
         directions.put(pvta.name, Map.of(
@@ -346,6 +365,10 @@ public class MapGame{
 
 
     }
+    /**
+     * Main Method
+     * @param args
+     */
     public static void main(String args[]){
         MapGame map = new MapGame();
         map.addNodesEdges();

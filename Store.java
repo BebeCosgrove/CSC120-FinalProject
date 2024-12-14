@@ -1,18 +1,19 @@
-import java.util.Hashtable;
 import java.util.ArrayList;
 
 public class Store extends Building{
 
     // Attributes
-    // private Hashtable<String, Goods> inventory;
     private ArrayList<Object> goodsInventory;
-    // i think we need just an arraylist of the objects because they have a name already and a hashtable just complicates it 
 
     
-    // Constructor
+    /**
+     * Constructor
+     * @param name name of store
+     * @param address address of store
+     */
     public Store(String name, String address) {
         super(name, address);
-        // this.inventory = new Hashtable<String, Goods> ();
+    
         this.goodsInventory = new ArrayList<Object>();
     }
 
@@ -33,7 +34,8 @@ public class Store extends Building{
 
     /**
      * Adds items to store's inventory
-     * @param goods
+     * @param object object to be added 
+     * @return object
      */
     public Object addGoods(Object object) {
         if (goodsInventory.contains(object)){
@@ -45,11 +47,10 @@ public class Store extends Building{
     
     }
 
-    // run this in while loop if user puts buy "object" and we can check if the store has this object
     /**
      * Removes items from store's inventory when they are sold
-     * @param object
-     * @return
+     * @param object object to be sold
+     * @return object that is sold
      */
     public Object sellGoods(Object object) {
         if (goodsInventory.contains(object)){

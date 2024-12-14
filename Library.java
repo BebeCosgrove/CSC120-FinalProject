@@ -1,14 +1,20 @@
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-/* This is a stub for the Library class */
+/**
+ * Library Class
+ */
 public class Library extends Building{
  
   // Attributes
   private Hashtable<Object, Boolean> collection;
 
 
-  // Constructor
+  /**
+   * Constructor
+   * @param name name of library
+   * @param address address of library
+   */
   public Library(String name, String address) {
     super(name, address);
     collection = new Hashtable<Object, Boolean> ();
@@ -52,7 +58,7 @@ public class Library extends Building{
    */
   public void checkOut(Object title) {
     collection.replace(title, false);
-    System.out.println("Borrrowed "+title);
+    System.out.println("Borrrowed "+ title.getName() );
   }
 
   /**
@@ -99,6 +105,7 @@ public class Library extends Building{
 
   /**
    * This method overrides the goToFloor() method in the parent class(Building) to allow movement between non-adjacent floors.
+   * @param n floor number
    */
   @Override
   public void goToFloor(int n) {
@@ -107,26 +114,6 @@ public class Library extends Building{
 
 
 
-
-
-  public static void main(String[] args) {
-    //Library library = new Library("Neilson", "7 Neilson Drive", 4);
-  //   System.out.println(library.getAddress());
-  //   library.addTitle("Beginning Korean I by Suk Massey");
-  //   library.addTitle("Intermediate Korean I by Suk Massey");
-  //   library.addTitle("STAT 2 by Ann R. Cannon");
-  //   library.printCollection();
-  //   System.out.println(library.removeTitle("STAT 2 by Ann R. Cannon"));
-  //   library.printCollection();
-  //   library.checkOut("Beginning Korean I by Suk Massey");
-  //   library.printCollection();
-  //   System.out.println(library.isAvailable("Beginning Korean I by Suk Massey"));
-  //   library.returnBook("Beginning Korean I by Suk Massey");
-  //   library.printCollection();
-  //   System.out.println(library.containsTitle("STAT 2 by Ann R. Cannon"));
-  //   Building building = library;
-  //   building.showOptions();
-  // }
-  }
+  
   
 }
