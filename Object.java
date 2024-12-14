@@ -1,3 +1,6 @@
+/**
+ * Object Class
+ */
 public class Object {
     private String name; // name of object
     private int price; // price of object 

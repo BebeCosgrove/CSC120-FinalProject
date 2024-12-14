@@ -1,5 +1,7 @@
 import java.awt.Point;
-
+/**
+ * Building class
+ */
 public class Building {
   /* Attributes */
   protected String name;

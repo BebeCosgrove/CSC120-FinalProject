@@ -1,5 +1,7 @@
 import java.util.ArrayList;
-
+/**
+ * Store Class
+ */
 public class Store extends Building {
 
   // Attributes
