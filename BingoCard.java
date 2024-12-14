@@ -18,7 +18,6 @@ public class BingoCard {
   Task task8 = new Task("Get a postcard from the SCAM        ");
   Task task9 = new Task("Buy Dumplings from T.ROOTS          ");
 
-
   /**
    * Constructor for BingoCard class
    * @param owner Person, the owner of the bingo card
@@ -46,7 +45,7 @@ public class BingoCard {
   /**
    * Setter for bingo boolean (sets true)
    */
-  public void setBingoTrue(){
+  public void setBingoTrue() {
     this.bingo = true;
   }
   /**
@@ -104,15 +103,13 @@ public class BingoCard {
       this.bingo = true;
       System.out.println("Checking second diagonal... " + this.bingo);
       //else no bingo
-    } 
-    if(this.bingo){
+    }
+    if (this.bingo) {
       System.out.println("BINGO! You win!");
       //end game
     }
     return this.bingo;
   }
-
-
 
   /*
    * Main method
@@ -131,4 +128,3 @@ public class BingoCard {
   }
 
 }
-

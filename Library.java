@@ -4,11 +4,10 @@ import java.util.Hashtable;
 /**
  * Library Class
  */
-public class Library extends Building{
- 
-  // Attributes
-  private Hashtable<Object, Boolean> collection;
+public class Library extends Building {
 
+  // Attributes
+  private Hashtable < Object, Boolean > collection;
 
   /**
    * Constructor
@@ -17,9 +16,8 @@ public class Library extends Building{
    */
   public Library(String name, String address) {
     super(name, address);
-    collection = new Hashtable<Object, Boolean> ();
+    collection = new Hashtable < Object, Boolean > ();
   }
-  
 
   // Methods
   /**
@@ -30,17 +28,15 @@ public class Library extends Building{
     collection.put(title, true);
   }
 
-
   /**
    * This an overloaded method(addTittle) to add a list of books to the collection each time we call it.
    * @param titles the lists of books we want to add
    */
-  public void addTitle(ArrayList<Object> titles) {
-    for (int i = 0; i < titles.size(); i++){
+  public void addTitle(ArrayList < Object > titles) {
+    for (int i = 0; i < titles.size(); i++) {
       collection.put(titles.get(i), true);
     }
   }
-
 
   /**
    * This method removes books from the collection
@@ -58,7 +54,7 @@ public class Library extends Building{
    */
   public void checkOut(Object title) {
     collection.replace(title, false);
-    System.out.println("Borrrowed "+ title.getName() );
+    System.out.println("Borrrowed " + title.getName());
   }
 
   /**
@@ -94,7 +90,6 @@ public class Library extends Building{
     System.out.println(collection.toString());
   }
 
-
   /**
    * This method overrides the showOptions() method in the parent class(Building) to reflect the subclass-specific options for Library class.
    */
@@ -112,8 +107,4 @@ public class Library extends Building{
     super.goToFloor(n);
   }
 
-
-
-  
-  
 }
