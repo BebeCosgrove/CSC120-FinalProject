@@ -1,4 +1,4 @@
-Commands:
+
 directions: 
 - north 
 - south 
@@ -16,6 +16,8 @@ objects:
 - postcard 
 - dumplings
 
+
+Commands:
 - walk (direction)
 - buy (object)
 - grab (object)
