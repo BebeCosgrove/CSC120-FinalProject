@@ -1,6 +1,20 @@
 Commands:
-directions: north, south, east, west
-objects: macbeth(book object), uggs, coffee, top, loaf/bread, ticket, plant, postcard, dumplings
+directions: 
+- north 
+- south 
+- east 
+- west
+
+objects:
+- macbeth(book object)
+- uggs 
+- coffee
+- top 
+- loaf/bread
+- ticket
+- plant 
+- postcard 
+- dumplings
 
 - walk (direction)
 - buy (object)
