@@ -28,7 +28,7 @@ public class Person {
     } else {
       if (object.getPrice() == 0) {
         inventory.add(object);
-        System.out.println("You have grabbed" + object.getName());
+        System.out.println("You have grabbed " + object.getName());
         return object;
       } else {
         System.out.println("This object costs money so you need to buy it.");

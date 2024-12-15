@@ -1,4 +1,3 @@
-import java.awt.Point;
 /**
  * Building class
  */
@@ -8,14 +7,13 @@ public class Building {
   protected String address;
   protected int nFloors;
   protected int activeFloor = -1; // Default value indicating we are not inside this building
-  protected Point location;
   protected boolean elevator;
   protected Object object;
 
   /**
    * Overloaded constructor for map game class
-   * @param name
-   * @param address
+   * @param name name of building
+   * @param address address of building
    */
   public Building(String name, String address) {
     this.name = name;
@@ -23,7 +21,14 @@ public class Building {
   }
 
   /* Constructor */
-  public Building(String name, String address, int nFloors, int locationX, int locationY, boolean elevator) {
+  /**
+   * Constructor
+   * @param name name of building
+   * @param address address of building
+   * @param nFloors number of floors
+   * @param elevator whether or not there is an elevator
+   */
+  public Building(String name, String address, int nFloors, boolean elevator) {
     if (name != null) {
       this.name = name;
     }
@@ -34,37 +39,48 @@ public class Building {
       throw new RuntimeException("Cannot construct a building with fewer than 1 floor.");
     }
     this.nFloors = nFloors;
-    this.location = new Point(locationX, locationY);
     this.elevator = elevator;
   }
 
   /* Accessors */
+
+  /**
+   * Getter for name
+   * @return name 
+   */
   public String getName() {
     return this.name;
   }
 
+  /**
+   * Getter for address
+   * @return address 
+   */
   public String getAddress() {
     return this.address;
   }
 
+  /**
+   * Getter for number of floors
+   * @return number of floors 
+   */
   public int getFloors() {
     return this.nFloors;
   }
 
-  public Point getLocation() {
-    return this.location;
-  }
-
+  /**
+   * Getter for whether or not there is an elevator
+   * @return whether or not there is an elevator
+   */
   public boolean getElevator() {
     return this.elevator;
   }
 
-  public void setLocation(int locationX, int locationY) {
-    this.location.x = locationX;
-    this.location.y = locationY;
-  }
-
   /* Navigation methods */
+  /**
+   * Lets user enter building
+   * @return building user is in
+   */
   public Building enter() {
     if (activeFloor != -1) {
       throw new RuntimeException("You are already inside this Building.");
@@ -74,6 +90,10 @@ public class Building {
     return this; // Return a pointer to the current building
   }
 
+  /**
+   * Lets user exit building
+   * @return building user exited
+   */
   public Building exit() {
     if (this.activeFloor == -1) {
       throw new RuntimeException("You are not inside this Building. Must call enter() before exit().");
@@ -86,6 +106,10 @@ public class Building {
     return null; // We're outside now, so the building is null
   }
 
+  /**
+   * Lets user go to floor
+   * @param floorNum floor number
+   */
   public void goToFloor(int floorNum) {
     if (this.activeFloor == -1) {
       throw new RuntimeException("You are not inside this Building. Must call enter() before navigating between floors.");
@@ -97,32 +121,45 @@ public class Building {
     this.activeFloor = floorNum;
   }
 
+  /**
+   * Lets user go up
+   */
   public void goUp() {
     this.goToFloor(this.activeFloor + 1);
   }
 
+  /**
+   * Lets user go down
+   */
   public void goDown() {
     this.goToFloor(this.activeFloor - 1);
   }
 
+  /**
+   * Prints options at that building
+   */
   public void showOptions() {
     System.out.println("Available options at " + this.name + ":\n + enter() \n + exit() \n + goUp() \n + goDown()\n + goToFloor(n)");
   }
 
-  //public String toString() {
-  //return this.name + " is a " + this.nFloors + "-story building located at " + this.address + ".";
-  //}
-
+  /**
+   * Returns the string of name
+   * @return name
+   */
   public String toString() {
     return this.name;
   }
 
+  /**
+   * Main Method
+   * @param args
+   */
   public static void main(String[] args) {
     System.out.println("------------------------------------");
     System.out.println("Test of Building constructor/methods");
     System.out.println("------------------------------------");
 
-    Building fordHall = new Building("Ford Hall", "100 Green Street Northampton, MA 01063", 4, 10, 20, true);
+    Building fordHall = new Building("Ford Hall", "100 Green Street Northampton, MA 01063", 20, true);
     System.out.println(fordHall);
     fordHall.showOptions();
 
